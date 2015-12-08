@@ -10,7 +10,7 @@ using namespace std;
 
 
 /* Standard C Function: Greatest Common Divisor */
-long gcd ( long a, long b )
+long gcd ( long long a, long b )
 {
 	long c;
 	while ( a != 0 ) 
@@ -27,11 +27,12 @@ long PerfectPower ( long n)
 
 	long b=2;
 	long k=(log(n)/log(2));
-	long a;
+	long long a;
 	while (b<=k)
 	{
 		long c=(ceil((log(n)/log(2))/log(b)));
-		a=pow(2,c);
+		//a=pow(2,c);
+		a = 1<<c;
 		while (pow(a,b)>n)
 		{
 			double d=(((b-1)*a+n/pow(a,(b-1)))/b);
@@ -153,25 +154,26 @@ if ((((long)(pow(( x +a ),n) - (pow(x,n) +a))%n!=0) && ((long)(pow(x,r) - 1) % n
 
 int _tmain(int argc, _TCHAR* argv[])
 {	
-	/*if (argc < 3) 
+	/*if (argc != 3) 
 	{
-		puts("error");
+		cout<<"error";
 		return 1;
 	}
 	*/
 
+	
+	//ifstream file;
+	ifstream file((argv[1]));
+	//file.open("input.txt"); 
 	long n;
-
-	ifstream file;
-	file.open("input.txt"); 
-
 	file>>n;
-	cout<<n<<endl;
+	//cout<<n<<endl;
 
 	file.close(); 
 
-	ofstream file_out;
-	file_out.open("output.txt"); 
+	//ofstream file_out;
+	ofstream file_out((argv[2]));;
+	//file_out.open("output.txt"); 
 
 	bool isPrimeFlag = true;
 	//bool truex=true; 
@@ -302,7 +304,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				file_out << "n is prime";
 			}
 			else
-				file_out << "n is compose";
+				file_out << "n is composite";
 
 			file_out.close();
 			}
@@ -311,3 +313,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
+			
+
+
+
+
+			
