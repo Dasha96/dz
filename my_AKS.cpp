@@ -119,27 +119,7 @@ long congruence (long a, long n,  long r)
 
 {	long x=1;
 
-/*
 
-	
-
-	long b=pow(x,r)-1;// b=x^r-1;
-	long c=x+a;
-
-	int f=((int)(pow(c,n)))%b;
-	long e=x;
-	int  g=(int)(pow(e,n))%b;
-
-	g=g-a;
-	if(f==g)
-	{
-	//cout<<"n is prime\n";
-	return(1);//n is prime
-	}
-	else
-	{
-	//cout<<"n is not prime\n ";
-	return(0);// n is not prime*/
 if ((((long)(pow(( x +a ),n) - (pow(x,n) +a))%n!=0) && ((long)(pow(x,r) - 1) % n != 0 )))
 	{
 		return(0);//cout<<"n is not prime\n ";
@@ -205,8 +185,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			else 
 			{
 				int PP=PerfectPower(n); 
-				//проверяет n на точную степень
-				//возвращает 1, если n точная степень, 0 если нет 
+				// is n a perfect power?
 				if(PP==1)
 				{
 					//cout<<"n is a perfect power, hence n is not prime ";
@@ -227,21 +206,18 @@ int _tmain(int argc, _TCHAR* argv[])
 							//return(0);
 						}
 						
-						r++;
 						
-					}
-				}
-
-
-				long prime=isprime(r);
-				while(prime==0){
+						long prime=isprime(r);
+				
+							
+							while(prime==0)
 					{
-						r=r+1;// увеличть r пока не станет простым
+						r=r+1;// increase r, r must be prime 
 						prime=isprime(r);
 					}
+					
 
-
-					long q=largestprime(r-1); // q должно быть наибольшим простым делителем r-1
+					long q=largestprime(r-1); // q must be the largest prime divisor (r-1)
 
 					double t1=4*sqrt(r)*(log(n)/log(2));
 
@@ -251,7 +227,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 					{
 
-						break; //q удовлетворяет всем условиям 
+						break; //q satisfies all the conditions
 					}
 
 					else
@@ -259,14 +235,17 @@ int _tmain(int argc, _TCHAR* argv[])
 						r=r+1;				
 					}
 
-
+					}
 
 				}
+				
+				}
+
 				if (r>n)
 				{
 					r=n;
 				}
-
+				//file_out<<"r="<< r<<"\n";
 				//cout<<"r="<< r<<"\n";
 				//int x=2;
 
@@ -293,13 +272,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					
 }
 
-
-
-
-			}
-
-
-			if (isPrimeFlag == true)
+					if (isPrimeFlag == true)
 			{
 				file_out << "n is prime";
 			}
@@ -307,7 +280,14 @@ int _tmain(int argc, _TCHAR* argv[])
 				file_out << "n is composite";
 
 			file_out.close();
+
+
+
 			}
+
+
+		
+		
 			
 
 
